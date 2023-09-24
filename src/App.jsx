@@ -1,5 +1,6 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
+import { FaRegCopy } from "react-icons/fa";
 
 const App = () => {
   const [count, setCount] = useState("");
@@ -62,15 +63,23 @@ const App = () => {
     } else {
       setResFont(64);
     }
-    if(res.toString().length >= 12){
-      setRes(res.toString().slice(0,12))
+    if (res.toString().length >= 12) {
+      setRes(res.toString().slice(0, 12));
     }
   }, [res]);
+
+  const copyText = () => {
+    navigator.clipboard.writeText(res);
+    alert("texto copiado: " + res)
+  };
 
   return (
     <>
       <div className="calc-container">
         <div className="display">
+          <div className="copy-btn" onClick={copyText}>
+            <FaRegCopy />
+          </div>
           <span className="count">{count}</span>
           <span style={{ fontSize: resFont }} className="res">
             {res}
