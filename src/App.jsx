@@ -38,12 +38,12 @@ const App = () => {
       case "-":
       case "/":
       case "*":
-        setCount(`${res} ${digit}`);
+        setCount(`${parseFloat(res)} ${digit}`);
         break;
 
       default:
         if (!isNaN(lastDigit) || lastDigit === ".") {
-          setRes(parseInt(res.toString() + digit.toString()));
+          setRes(res.toString() + digit.toString());
         } else if (lastDigit === "=") {
           setCount("");
           setRes(digit);
